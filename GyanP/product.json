@@ -1,0 +1,183 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Handcrafted Pottery",
+      "category": "Pottery",
+      "description": "Explore beautifully handcrafted pottery made by skilled artisans. Each piece showcases intricate designs and exceptional craftsmanship.",
+      "images": [
+       "down1.png",
+        "Tipeshwar.png"
+      ],
+      "price": "100 Rs",
+      "details": "Experience the beauty of handcrafted pottery made by skilled artisans. Each piece is meticulously designed and crafted with precision. The pottery features unique and intricate patterns, making them a perfect addition to your home decor. Made with high-quality materials, these pottery items are durable and long-lasting. Size: 10cm (height) x 15cm (diameter).",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "I absolutely love the pottery! The craftsmanship is outstanding."
+        },
+        {
+          "rating": 4,
+          "comment": "The pottery pieces are beautiful and add a touch of elegance to my living room."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Fresh Ghee",
+      "category": "Dairy",
+      "description": "Enjoy the richness of fresh ghee made from pure cow's milk.",
+      "images": [
+        "/images/ghee1.jpg",
+        "/images/ghee2.jpg"
+      ],
+      "price": "600 Rs per kg",
+      "details": "Our fresh ghee is made from hand-churned cow's milk, ensuring its purity and quality. It has a rich and creamy texture with a delightful aroma. Perfect for cooking, baking, or adding a flavorful touch to your dishes. Weight: 500g.",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "The ghee is absolutely delicious! It enhances the taste of my dishes."
+        },
+        {
+          "rating": 4,
+          "comment": "I've tried many brands of ghee, but this one stands out in terms of quality and taste."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Handwoven Textiles",
+      "category": "Textiles",
+      "description": "Indulge in the beauty of handwoven textiles with intricate designs and vibrant colors.",
+      "images": [
+        "/images/textile1.jpg",
+        "/images/textile2.jpg",
+        "/images/textile3.jpg"
+      ],
+      "price": "1000 Rs",
+      "details": "Our handwoven textiles are created by skilled artisans using traditional weaving techniques. Each piece showcases stunning patterns and vibrant colors that reflect the rich cultural heritage of our region. Made with high-quality yarns, these textiles are soft, durable, and perfect for adding a touch of elegance to your home. Size: 120cm x 180cm.",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "The textiles are of excellent quality. I'm impressed with the range of designs available."
+        },
+        {
+          "rating": 4,
+          "comment": "I purchased a few textiles for my living room, and they have completely transformed the space."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Wooden Crafts",
+      "category": "Woodwork",
+      "description": "Appreciate the artistry of wooden crafts made from sustainable materials.",
+      "images": [
+        "/images/wood1.jpg",
+        "/images/wood2.jpg"
+      ],
+      "price": "2000 Rs",
+      "details": "Our wooden crafts are meticulously handcrafted by skilled artisans using sustainably sourced wood. Each piece showcases intricate carvings and fine craftsmanship. From decorative items to functional pieces, our wooden crafts are perfect for adding a touch of natural beauty to your home. Size: 20cm (height) x 30cm (width) x 10cm (depth).",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "The wooden crafts are beautifully made. They make excellent gifts."
+        },
+        {
+          "rating": 4,
+          "comment": "I love the attention to detail in the wooden crafts. They are true works of art."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Artisanal Candles",
+      "category": "Home Decor",
+      "description": "Illuminate your space with the warm glow of artisanal candles.",
+      "images": [
+        "/images/candle1.jpg",
+        "/images/candle2.jpg",
+        "/images/candle3.jpg"
+      ],
+      "price": "250 Rs",
+      "details": "Our artisanal candles are hand-poured using premium quality wax and infused with delightful scents. Each candle is carefully crafted to create a cozy and relaxing ambiance in your home. Available in various sizes and fragrances, these candles make a perfect addition to any room. Burn time: approximately 20 hours.",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "The candles smell amazing and burn evenly. They create a soothing atmosphere."
+        },
+        {
+          "rating": 5,
+          "comment": "I'm impressed with the quality of these candles. They are long-lasting and add a touch of elegance to my space."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Handmade Jewelry",
+      "category": "Fashion",
+      "description": "Adorn yourself with unique and handcrafted jewelry pieces.",
+      "images": [
+        "/images/jewelry1.jpg",
+        "/images/jewelry2.jpg"
+      ],
+      "price": "800 Rs",
+      "details": "Our handmade jewelry is created by skilled artisans using high-quality materials and intricate techniques. Each piece is unique and reflects the creativity and craftsmanship of the maker. From earrings to necklaces, our jewelry collection offers a wide range of designs to suit every style. Perfect for adding a touch of elegance to any outfit.",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "The jewelry is stunning! I receive compliments every time I wear it."
+        },
+        {
+          "rating": 4,
+          "comment": "I love the attention to detail in the jewelry pieces. They are true works of art."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Organic Skincare Set",
+      "category": "Beauty",
+      "description": "Pamper your skin with our organic skincare set.",
+      "images": [
+        "/images/skincare1.jpg",
+        "/images/skincare2.jpg",
+        "/images/skincare3.jpg"
+      ],
+      "price": "1200 Rs",
+      "details": "Our organic skincare set is carefully curated to nourish and rejuvenate your skin. Made with all-natural and organic ingredients, this set includes a cleanser, toner, moisturizer, and face mask. Indulge in the goodness of nature and give your skin the care it deserves. Suitable for all skin types.",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "I've been using this skincare set for a few weeks, and my skin feels amazing. The products are gentle yet effective."
+        },
+        {
+          "rating": 4,
+          "comment": "I love that these products are organic and free from harsh chemicals. They have improved the texture and appearance of my skin."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Handmade Leather Bags",
+      "category": "Fashion",
+      "description": "Carry your essentials in style with our handmade leather bags.",
+      "images": [
+        "/images/bag1.jpg",
+        "/images/bag2.jpg"
+      ],
+      "price": "3000 Rs",
+      "details": "Our handmade leather bags are crafted by skilled artisans using premium quality leather. Each bag is designed with functionality and style in mind, offering ample storage space and a timeless appeal. From shoulder bags to crossbody bags, our collection has a variety of options to suit your needs. Size: 30cm (height) x 40cm (width) x 10cm (depth).",
+      "reviews": [
+        {
+          "rating": 4,
+          "comment": "The leather bags are well-made and durable. They are my go-to choice for both casual and formal occasions."
+        },
+        {
+          "rating": 5,
+          "comment": "I'm impressed with the craftsmanship of these bags. They are stylish, functional, and worth every penny."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-semibold text-center mb-4">Product Checkout</h1>
+        <div id="product-list"></div>
+        <button id="checkout-button" class="block w-full bg-green-500 text-white text-center py-3 rounded-md mt-4">Proceed to Checkout</button>
+    </div>
+
+    <script>
+        fetch('product.json')
+            .then(response => response.json())
+            .then(data => {
+                const productList = document.getElementById('product-list');
+
+                data.products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('flex', 'items-center', 'mb-4');
+
+                    const productImage = document.createElement('img');
+                    productImage.classList.add('w-16', 'h-16', 'object-cover', 'rounded', 'mr-4');
+                    productImage.src = product.images[0];
+                    productImage.alt = product.name;
+
+                    const productInfo = document.createElement('div');
+                    productInfo.classList.add('flex-grow');
+
+                    const productName = document.createElement('h2');
+                    productName.classList.add('text-lg', 'font-semibold', 'mb-1');
+                    productName.textContent = product.name;
+
+                    const productPrice = document.createElement('p');
+                    productPrice.classList.add('text-gray-600');
+                    productPrice.textContent = `Price: ${product.price}`;
+
+                    const quantityInput = document.createElement('div');
+                    quantityInput.classList.add('flex', 'items-center', 'mb-1');
+
+                    const quantityLabel = document.createElement('label');
+                    quantityLabel.classList.add('mr-2');
+                    quantityLabel.textContent = 'Quantity';
+
+                    const quantityInputField = document.createElement('input');
+                    quantityInputField.classList.add('w-16', 'p-2', 'border', 'border-gray-300', 'rounded');
+                    quantityInputField.type = 'number';
+                    quantityInputField.value = '1';
+                    quantityInputField.min = '1';
+
+                    quantityInput.append(quantityLabel, quantityInputField);
+                    productInfo.append(productName, productPrice, quantityInput);
+                    productCard.append(productImage, productInfo);
+                    productList.appendChild(productCard);
+                });
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
+
+        document.getElementById('checkout-button').addEventListener('click', () => {
+            // Handle checkout button click event
+            alert('Proceeding to checkout...');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        
+        .image-slider {
+            max-width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            cursor: pointer;
+        }
+        
+        .image-thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .thumbnail {
+            flex: 0 0 16.6667%;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 10px 20px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .tab.active {
+            color: #333;
+            border-bottom: 2px solid #333;
+        }
+        
+        .content {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .button:hover {
+            background-color: #222;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .rating-star {
+            color: #FFD700;
+            margin-right: 5px;
+        }
+        
+        .rating-text {
+            font-weight: bold;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                flex: 0 0 33.3333%;
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="product-name"></h1>
+        <div class="image-slider">
+            <div class="swiper-container">
+                <div class="swiper-wrapper" id="image-slider"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="image-thumbnails" id="image-thumbnails"></div>
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('description')">Description</div>
+            <div class="tab" onclick="showTab('reviews')">Reviews</div>
+            <div class="tab" onclick="showTab('details')">Details</div>
+        </div>
+        <div class="content active" id="description"></div>
+        <div class="content" id="reviews"></div>
+        <div class="content" id="details"></div>
+        <a href="#" class="button">Shop Now</a>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        fetch('product.json')
+            .then(response => response.json())
+            .then(data => {
+                const product = data.products.find(item => item.id == productId);
+
+                if (product) {
+                    const productName = document.getElementById('product-name');
+                    const description = document.getElementById('description');
+                    const reviews = document.getElementById('reviews');
+                    const details = document.getElementById('details');
+                    const imageThumbnails = document.getElementById('image-thumbnails');
+
+                    productName.textContent = product.name;
+                    description.innerHTML = `
+                        <p>${product.description}</p>
+                        <p style="font-size: 20px;">Price: ${product.price}</p>
+                    `;
+                    reviews.innerHTML = `
+                        <div class="rating">
+                            ${generateRatingStars(product.reviews[0].rating)}
+                            <span class="rating-text">${product.reviews[0].rating}/5</span>
+                        </div>
+                        <p>${product.reviews[0].comment}</p>
+                    `;
+                    details.innerHTML = `
+                        <p>${product.details}</p>
+                        <p>Category: ${product.category}</p>
+                    `;
+
+                    const swiper = new Swiper('.swiper-container', {
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true
+                        }
+                    });
+
+                    const imageSlider = document.getElementById('image-slider');
+
+                    product.images.forEach((imageUrl, index) => {
+                        const slide = document.createElement('div');
+                        slide.classList.add('swiper-slide');
+                        const image = document.createElement('img');
+                        image.src = imageUrl;
+                        image.alt = product.name;
+                        image.addEventListener('click', () => {
+                            showImage(index);
+                        });
+                        slide.appendChild(image);
+                        imageSlider.appendChild(slide);
+
+                        const thumbnail = document.createElement('div');
+                        thumbnail.classList.add('thumbnail');
+                        const thumbnailImage = document.createElement('img');
+                        thumbnailImage.src = imageUrl;
+                        thumbnailImage.alt = product.name;
+                        thumbnailImage.addEventListener('click', () => {
+                            showImage(index);
+                        });
+                        thumbnail.appendChild(thumbnailImage);
+                        imageThumbnails.appendChild(thumbnail);
+                    });
+
+                    swiper.update();
+                } else {
+                    console.log('Product not found');
+                }
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
+
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+
+            tabs.forEach(tab => {
+                if (tab.id === tabId) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            contents.forEach(content => {
+                if (content.id === tabId) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+        
+        function showImage(index) {
+            const swiper = document.querySelector('.swiper-container').swiper;
+            swiper.slideTo(index);
+        }
+        
+        function generateRatingStars(rating) {
+            const filledStar = '<span class="rating-star">&#9733;</span>';
+            const emptyStar = '<span class="rating-star">&#9734;</span>';
+            const starCount = 5;
+            let stars = '';
+
+            for (let i = 1; i <= starCount; i++) {
+                if (i <= rating) {
+                    stars += filledStar;
+                } else {
+                    stars += emptyStar;
+                }
+            }
+
+            return stars;
+        }
+    </script>
+</body>
+</html>
